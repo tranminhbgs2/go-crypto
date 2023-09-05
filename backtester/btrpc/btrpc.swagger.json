@@ -1,0 +1,1109 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "btrpc.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "BacktesterService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/clearalltasks": {
+      "delete": {
+        "operationId": "BacktesterService_ClearAllTasks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcClearAllTasksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/cleartask": {
+      "delete": {
+        "operationId": "BacktesterService_ClearTask",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcClearTaskResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/executestrategyfromconfig": {
+      "post": {
+        "operationId": "BacktesterService_ExecuteStrategyFromConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcExecuteStrategyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "doNotRunImmediately",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "doNotStore",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.nickname",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.goal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.strategySettings.name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.strategySettings.useSimultaneousSignalProcessing",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.strategySettings.disableUsdTracking",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.fundingSettings.useExchangeLevelFunding",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.interval",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "config.dataSettings.datatype",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.apiData.startDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.dataSettings.apiData.endDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.dataSettings.apiData.inclusiveEndDate",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.databaseData.startDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.dataSettings.databaseData.endDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.enabled",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.verbose",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.driver",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.host",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.port",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.userName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.password",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.database",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.config.config.sslMode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.path",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.databaseData.inclusiveEndDate",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.csvData.path",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.dataSettings.liveData.newEventTimeout",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.dataSettings.liveData.dataCheckTimer",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.dataSettings.liveData.realOrders",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.liveData.closePositionsOnStop",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.dataSettings.liveData.dataRequestRetryTolerance",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.dataSettings.liveData.dataRequestRetryWaitTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.dataSettings.liveData.useRealOrders",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.portfolioSettings.leverage.canUseLeverage",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.portfolioSettings.leverage.maximumOrdersWithLeverageRatio",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.leverage.maximumLeverageRate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.leverage.maximumCollateralLeverageRate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.buySide.minimumSize",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.buySide.maximumSize",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.buySide.maximumTotal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.sellSide.minimumSize",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.sellSide.maximumSize",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.portfolioSettings.sellSide.maximumTotal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.statisticSettings.riskFreeRate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/executestrategyfromfile": {
+      "post": {
+        "operationId": "BacktesterService_ExecuteStrategyFromFile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcExecuteStrategyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "strategyFilePath",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "doNotRunImmediately",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "doNotStore",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "startTimeOverride",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endTimeOverride",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "intervalOverride",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/listalltasks": {
+      "get": {
+        "operationId": "BacktesterService_ListAllTasks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcListAllTasksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/startalltasks": {
+      "post": {
+        "operationId": "BacktesterService_StartAllTasks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcStartAllTasksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/starttask": {
+      "post": {
+        "operationId": "BacktesterService_StartTask",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcStartTaskResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/stopalltasks": {
+      "post": {
+        "operationId": "BacktesterService_StopAllTasks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcStopAllTasksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    },
+    "/v1/stoptask": {
+      "post": {
+        "operationId": "BacktesterService_StopTask",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btrpcStopTaskResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BacktesterService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "btrpcApiData": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "inclusiveEndDate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "btrpcCSVData": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcClearAllTasksResponse": {
+      "type": "object",
+      "properties": {
+        "clearedTasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcTaskSummary"
+          }
+        },
+        "remainingTasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcTaskSummary"
+          }
+        }
+      }
+    },
+    "btrpcClearTaskResponse": {
+      "type": "object",
+      "properties": {
+        "clearedTask": {
+          "$ref": "#/definitions/btrpcTaskSummary"
+        }
+      }
+    },
+    "btrpcConfig": {
+      "type": "object",
+      "properties": {
+        "nickname": {
+          "type": "string"
+        },
+        "goal": {
+          "type": "string"
+        },
+        "strategySettings": {
+          "$ref": "#/definitions/btrpcStrategySettings"
+        },
+        "fundingSettings": {
+          "$ref": "#/definitions/btrpcFundingSettings"
+        },
+        "currencySettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcCurrencySettings"
+          }
+        },
+        "dataSettings": {
+          "$ref": "#/definitions/btrpcDataSettings"
+        },
+        "portfolioSettings": {
+          "$ref": "#/definitions/btrpcPortfolioSettings"
+        },
+        "statisticSettings": {
+          "$ref": "#/definitions/btrpcStatisticSettings"
+        }
+      }
+    },
+    "btrpcCredentials": {
+      "type": "object",
+      "properties": {
+        "exchange": {
+          "type": "string"
+        },
+        "keys": {
+          "$ref": "#/definitions/btrpcExchangeCredentials"
+        }
+      }
+    },
+    "btrpcCurrencySettings": {
+      "type": "object",
+      "properties": {
+        "exchangeName": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "buySide": {
+          "$ref": "#/definitions/btrpcPurchaseSide"
+        },
+        "sellSide": {
+          "$ref": "#/definitions/btrpcPurchaseSide"
+        },
+        "minSlippagePercent": {
+          "type": "string"
+        },
+        "maxSlippagePercent": {
+          "type": "string"
+        },
+        "makerFeeOverride": {
+          "type": "string"
+        },
+        "takerFeeOverride": {
+          "type": "string"
+        },
+        "maximumHoldingsRatio": {
+          "type": "string"
+        },
+        "skipCandleVolumeFitting": {
+          "type": "boolean"
+        },
+        "useExchangeOrderLimits": {
+          "type": "boolean"
+        },
+        "useExchangePnlCalculation": {
+          "type": "boolean"
+        },
+        "spotDetails": {
+          "$ref": "#/definitions/btrpcSpotDetails"
+        },
+        "futuresDetails": {
+          "$ref": "#/definitions/btrpcFuturesDetails"
+        }
+      }
+    },
+    "btrpcCustomSettings": {
+      "type": "object",
+      "properties": {
+        "keyField": {
+          "type": "string"
+        },
+        "keyValue": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcDataSettings": {
+      "type": "object",
+      "properties": {
+        "interval": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "datatype": {
+          "type": "string"
+        },
+        "apiData": {
+          "$ref": "#/definitions/btrpcApiData"
+        },
+        "databaseData": {
+          "$ref": "#/definitions/btrpcDatabaseData"
+        },
+        "csvData": {
+          "$ref": "#/definitions/btrpcCSVData"
+        },
+        "liveData": {
+          "$ref": "#/definitions/btrpcLiveData"
+        }
+      }
+    },
+    "btrpcDatabaseConfig": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "verbose": {
+          "type": "boolean"
+        },
+        "driver": {
+          "type": "string"
+        },
+        "config": {
+          "$ref": "#/definitions/btrpcDatabaseConnectionDetails"
+        }
+      }
+    },
+    "btrpcDatabaseConnectionDetails": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "database": {
+          "type": "string"
+        },
+        "sslMode": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcDatabaseData": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "config": {
+          "$ref": "#/definitions/btrpcDatabaseConfig"
+        },
+        "path": {
+          "type": "string"
+        },
+        "inclusiveEndDate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "btrpcExchangeCredentials": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "pemKey": {
+          "type": "string"
+        },
+        "subAccount": {
+          "type": "string"
+        },
+        "oneTimePassword": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcExchangeLevelFunding": {
+      "type": "object",
+      "properties": {
+        "exchangeName": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "initialFunds": {
+          "type": "string"
+        },
+        "transferFee": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcExecuteStrategyResponse": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/definitions/btrpcTaskSummary"
+        }
+      }
+    },
+    "btrpcFundingSettings": {
+      "type": "object",
+      "properties": {
+        "useExchangeLevelFunding": {
+          "type": "boolean"
+        },
+        "exchangeLevelFunding": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcExchangeLevelFunding"
+          }
+        }
+      }
+    },
+    "btrpcFuturesDetails": {
+      "type": "object",
+      "properties": {
+        "leverage": {
+          "$ref": "#/definitions/btrpcLeverage"
+        }
+      }
+    },
+    "btrpcLeverage": {
+      "type": "object",
+      "properties": {
+        "canUseLeverage": {
+          "type": "boolean"
+        },
+        "maximumOrdersWithLeverageRatio": {
+          "type": "string"
+        },
+        "maximumLeverageRate": {
+          "type": "string"
+        },
+        "maximumCollateralLeverageRate": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcListAllTasksResponse": {
+      "type": "object",
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcTaskSummary"
+          }
+        }
+      }
+    },
+    "btrpcLiveData": {
+      "type": "object",
+      "properties": {
+        "newEventTimeout": {
+          "type": "string",
+          "format": "int64"
+        },
+        "dataCheckTimer": {
+          "type": "string",
+          "format": "int64"
+        },
+        "realOrders": {
+          "type": "boolean"
+        },
+        "closePositionsOnStop": {
+          "type": "boolean"
+        },
+        "dataRequestRetryTolerance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "dataRequestRetryWaitTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "useRealOrders": {
+          "type": "boolean"
+        },
+        "credentials": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcCredentials"
+          }
+        }
+      }
+    },
+    "btrpcPortfolioSettings": {
+      "type": "object",
+      "properties": {
+        "leverage": {
+          "$ref": "#/definitions/btrpcLeverage"
+        },
+        "buySide": {
+          "$ref": "#/definitions/btrpcPurchaseSide"
+        },
+        "sellSide": {
+          "$ref": "#/definitions/btrpcPurchaseSide"
+        }
+      }
+    },
+    "btrpcPurchaseSide": {
+      "type": "object",
+      "properties": {
+        "minimumSize": {
+          "type": "string"
+        },
+        "maximumSize": {
+          "type": "string"
+        },
+        "maximumTotal": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcSpotDetails": {
+      "type": "object",
+      "properties": {
+        "initialBaseFunds": {
+          "type": "string"
+        },
+        "initialQuoteFunds": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcStartAllTasksResponse": {
+      "type": "object",
+      "properties": {
+        "tasksStarted": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "btrpcStartTaskResponse": {
+      "type": "object",
+      "properties": {
+        "started": {
+          "type": "boolean"
+        }
+      }
+    },
+    "btrpcStatisticSettings": {
+      "type": "object",
+      "properties": {
+        "riskFreeRate": {
+          "type": "string"
+        }
+      }
+    },
+    "btrpcStopAllTasksResponse": {
+      "type": "object",
+      "properties": {
+        "tasksStopped": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcTaskSummary"
+          }
+        }
+      }
+    },
+    "btrpcStopTaskResponse": {
+      "type": "object",
+      "properties": {
+        "stoppedTask": {
+          "$ref": "#/definitions/btrpcTaskSummary"
+        }
+      }
+    },
+    "btrpcStrategySettings": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "useSimultaneousSignalProcessing": {
+          "type": "boolean"
+        },
+        "disableUsdTracking": {
+          "type": "boolean"
+        },
+        "customSettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btrpcCustomSettings"
+          }
+        }
+      },
+      "title": "struct definitions"
+    },
+    "btrpcTaskSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "strategyName": {
+          "type": "string"
+        },
+        "dateLoaded": {
+          "type": "string"
+        },
+        "dateStarted": {
+          "type": "string"
+        },
+        "dateEnded": {
+          "type": "string"
+        },
+        "closed": {
+          "type": "boolean"
+        },
+        "liveTesting": {
+          "type": "boolean"
+        },
+        "realOrders": {
+          "type": "boolean"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
